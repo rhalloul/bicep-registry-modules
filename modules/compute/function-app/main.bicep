@@ -160,13 +160,6 @@ APPINSIGHTS_INSTRUMENTATIONKEY
 APPLICATIONINSIGHTS_CONNECTION_STRING''')
 param extraAppSettings object = {}
 
-//Variables
-
-//var maxNameLength = 24
-//var uniqueStoragename = length(uniqueString(storgeAccountName)) > maxNameLength ? substring(uniqueString(storgeAccountName), 0, maxNameLength) : uniqueString(storgeAccountName)
-//var storageAccountName = 'iep${uniqueStoragename}'
-
-
 
 @description('Defines storageAccounts for Azure Function App.')
 resource storageAccount 'Microsoft.Storage/storageAccounts@2021-06-01' existing = {
