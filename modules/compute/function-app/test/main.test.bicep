@@ -1,4 +1,4 @@
-param name string = take(deployment().name, 64)
+param name string = take(deployment().name, 55)
 param location string = resourceGroup().location
 
 param enableDockerContainer bool = true
@@ -33,12 +33,12 @@ Dependency list:
 ''')
 
 module test1 '../main.bicep' = {
-  name: 'func-app1-${guid(name)}'
+  name: 'func-app1-${uniqueString(name)}'
   dependsOn: [
     dependencies
   ]
   params: {
-    name: 'funcapp1-${resourceGroup().name}'
+    name: 'func2-${name}'
     location: location
     sku: {
       name: 'Y1'
@@ -61,7 +61,7 @@ module test1 '../main.bicep' = {
 
 // TODO: should add test case using sourcecontrol extension later
 module test2 '../main.bicep' = {
-  name: 'func-app2-${resourceGroup().name}'
+  name: 'func-app2-${uniqueString(name)}'
   scope: resourceGroup()
   dependsOn: [
     dependencies
